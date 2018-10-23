@@ -1,2 +1,8 @@
 flask
 flask-bootstrap
+requests
+sqlalchemy
+mysqlclient
+numpy
+pygdal
+Pillow

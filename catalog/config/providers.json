@@ -1,0 +1,18 @@
+{
+  "OP_CBERS1": {
+    "url": "http://www.dpi.inpe.br/opensearch/v2",
+    "type": "opensearch"
+  },
+  "OP_CBERS2": {
+    "url": "http://cbers2.dpi.inpe.br:5002/",
+    "type": "opensearch"
+  },
+  "DEVELOPMENT_SEED": {
+    "url": "https://api.developmentseed.org/satellites/",
+    "type": "dev_seed"
+  },
+  "LOCAL_HOST": {
+    "url": "http://localhost:5002/",
+    "type": "opensearch"
+  }
+}

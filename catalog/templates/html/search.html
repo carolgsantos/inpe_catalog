@@ -1,0 +1,152 @@
+<div class="sidebar-pane" id="home" style="padding-right: 0px; padding-bottom: 0px">
+    <h1 class="sidebar-header">Catalog Search<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+    <div class="container-fluid nopadding-left" style="margin-top: 10px">
+        <form role="form" id="searchForm">
+            <div class="row ">
+                <div class="col-sm-12">
+                    <label for="BoundingBox">Bounding Box:</label>
+                </div>
+            </div>
+            <div class="row justify-content-md-center">
+                <div class="col-sm-6 justify-content-md-center">
+                    <div class="form-group">
+                        <input class="form-control form-control-sm" type="text" placeholder="North (+90)" name="north"
+                            id="bboxn">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <input class="form-control form-control-sm" type="text" placeholder="West (-180)" name="west"
+                            id="bboxw">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <input class="form-control form-control-sm" type="text" placeholder="East (+180)" name="east"
+                            id="bboxe">
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-md-center">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <input class="form-control form-control-sm" type="text" placeholder="South (-90)" name="south"
+                            id="bboxs">
+                    </div>
+                </div>
+            </div>
+            <div class="row ">
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label for="path">Path:</label>
+                        <input class="form-control form-control-sm" type="number" placeholder="220" name="path" id="path">
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label for="row">Row:</label>
+                        <input class="form-control form-control-sm" type="number" placeholder="63" name="row" id="row">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="band">Band:</label>
+                        <select class="custom-select" name="band" id="bandSelect">
+                        </select>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="start">From:</label>
+                        <input class="form-control form-control-sm datepicker-start" type="text" placeholder="2015-01-01"
+                            name="start" id="startPicker" data-bind="">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="end">To:</label>
+                        <input class="form-control form-control-sm datepicker-end" type="text" placeholder="2015-12-30"
+                            name="end" id="endPicker" data-bind="">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="start">Type:</label>
+                        <select class="custom-select" name="type" id="typeSelect">
+                        </select>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="radiometricProcessing">Radiometric Processing:</label>
+                        <select class="custom-select" name="radiometricProcessing" id="radiometricProcessingSelect">
+                        </select>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="count">Count:</label>
+                        <input class="form-control form-control-sm" type="number" value="10" name="count" id="count">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="startIndex">Start Index:</label>
+                        <input class="form-control form-control-sm" type="number" placeholder="1" name="startIndex" id="startIndex">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="collectionId">Collection ID:</label>
+                        <select class="custom-select" name="dataset" id="collectionIdSelect">
+                        </select>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="cloud">Cloud Coverage:</label>
+                        <input class="form-control form-control-sm" type="number" value="100" name="cloud" id="cloud">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <label for="providers">Providers:</label>
+                    <div class="row" style="margin-bottom: 10px">
+                        <div class="col-sm-12" id="providersCheck"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <button type="submit" class="btn btn-primary base-color" name="search" id="searchSubmit">Search
+                        &nbsp;<span class="fa fa-search"></span></button>
+                </div>
+            </div>
+        </form>
+        </br>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="satellitePoints">Satellite:</label>
+                    <select class="custom-select" name="satellitePoints" id="satellitePoints">
+                        <option value=""></option>
+                        <option value="L8">L8</option>
+                        <option value="LC8">LC8</option>
+                        <option value="S2">S2</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <button class="btn btn-primary base-color" id="getgcps">Extract Points &nbsp;<i class="fa fa-map-marker"></i></button>
+                <button class="btn btn-primary base-color" id="getwrss">Show WRSS &nbsp;<i class="fa fa-th"></i></button>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid nopadding-left" style="margin-top: 15px">
+        <div class="accordion" id="accordion-results">
+        </div>
+    </div>
+</div>

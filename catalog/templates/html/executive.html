@@ -1,0 +1,85 @@
+<div class="sidebar-pane" id="maestro">
+    <h1 class="sidebar-header">Production Manager<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+    <div class="container-fluid nopadding-left" style="margin-top: 10px">
+        <form role="form" id="execForm">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="satellite">Satellite:</label>
+                        <div class="row" style="margin-bottom: 10px">
+                            <div class="col-sm-12" id="satellite">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="CBERS4" id="CBERS4" checked>
+                                    <label class="form-check-label" for="defaultCheck1">CBERS4</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="process">Instrument:</label>
+                        <div class="row" style="margin-bottom: 10px">
+                            <div class="col-sm-12" id="instrument">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="AWFI" id="AWFI" checked>
+                                    <label class="form-check-label" for="defaultCheck1">AWFI</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="MUX" id="MUX" checked>
+                                    <label class="form-check-label" for="defaultCheck1">MUX</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="PAN5M" id="PAN5M" checked>
+                                    <label class="form-check-label" for="defaultCheck1">PAN5M</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="PAN10M" id="PAN10M" checked>
+                                    <label class="form-check-label" for="defaultCheck1">PAN10M</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="start">From:</label>
+                        <input class="form-control form-control-sm datepicker-start" type="text" placeholder="2015-01-01"
+                            name="start" id="startPicker2" data-bind="2">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="end">To:</label>
+                        <input class="form-control form-control-sm datepicker-end" type="text" placeholder="2015-12-30"
+                            name="end" id="endPicker2" data-bind="2">
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label for="drd">DRD:</label>
+                        <div class="input-group mb-3">
+                            <input class="form-control form-control-sm" type="text" placeholder="" name="drd" id="drd">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" type="button" id="showdrds" data-toggle="collapse"
+                                    data-target="#collapseTree" aria-expanded="false" aria-controls="collapseTree"><i
+                                        class="fa fa-search" aria-hidden="true"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="collapse" id="collapseTree">
+                        <div class="col-sm-12" style="overflow-x: scroll;height: 60vh;">
+                            <div id="jstreeContainer"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 10px">
+                <div class="col">
+                    <button type="submit" class="btn btn-primary base-color" name="exec" id="execSubmit">Start&nbsp;<span
+                            class="fa fa-play"></span></button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

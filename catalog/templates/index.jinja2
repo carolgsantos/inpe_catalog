@@ -1,8 +1,5 @@
 {% extends "bootstrap/base.html" %}
-{% block title %}INPE's EO Image Catalog{% endblock %}
-
-{% block navbar %}
-{% endblock %}
+{% block title %}Station Manager{% endblock %}
 
 {% block styles %}
 {{super()}}
@@ -12,10 +9,34 @@
 {% block content %}
 {{super()}}
 
-<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="z-index:3000">
+<div id="sidebar" class="sidebar collapsed">
+    <div class="sidebar-tabs">
+        <ul role="tablist">
+            <li><a href="#home" role="tab"><i class="fa fa-search"></i></a></li>
+            <li class="disabled"><a href="#download" role="tab"><i class="fa fa-download"></i></a></li>
+            <li><a href="#maestro" role="tab"><i class="fa fa-calendar"></i></a></li>
+            <li class="disabled"><a href="#statistic" role="tab"><i class="fa fa-area-chart"></i></a></li>
+        </ul>
+        <ul role="tablist">
+            <li><a href="#notifications" role="tab"><i class="fa fa-envelope-o"></i></a></li>
+            <li class="disabled"><a href="#settings" role="tab"><i class="fa fa-gear"></i></a></li>
+        </ul>
+    </div>
+    <div class="sidebar-content">
+        {% include 'html/search.html' %}
+        {% include 'html/executive.html' %}
+        {% include 'html/statistics.html' %}
+        {% include 'html/notifications.html' %}
+        {% include 'html/download.html' %}
+        {% include 'html/settings.html' %}
+    </div>
+</div>
+
+<div id="modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
+    style="z-index:3000">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header modal-header-download">
                 <h5 class="modal-title">Downloads</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -29,115 +50,23 @@
     </div>
 </div>
 
-<div id="sidebar" class="sidebar collapsed">
-    <div class="sidebar-tabs">
-        <ul role="tablist">
-            <li><a href="#home" role="tab"><i class="fa fa-search"></i></a></li>
-            <li><a href="#download" role="tab"><i class="fa fa-download"></i></a></li>
-        </ul>
-        <ul role="tablist">
-            <li><a href="#settings" role="tab"><i class="fa fa-gear"></i></a></li>
-        </ul>
-    </div>
-    <div class="sidebar-content">
-        <div class="sidebar-pane" id="home" style="padding-right: 0px; padding-bottom: 0px">
-            <h1 class="sidebar-header">Catalog Search<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
-            <div class="container-fluid nopadding-left" style="margin-top: 10px">
-                <form role="form" id="searchForm"> 
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="form-group">
-                                <label for="BoundingBox">Bounding Box</label>  
-                                <input class="form-control form-control-sm" type="text" placeholder="West, South , East, North. Eg: -52.23,-25.22,-43.10,-20.58" name="bbox" id="bbox">
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="form-group"> 
-                                <label for="path">Path</label>
-                                <input class="form-control form-control-sm" type="number" placeholder="220" name="path" id="path">
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="form-group">
-                                <label for="row">Row</label>
-                                <input class="form-control form-control-sm" type="number" placeholder="63" name="row" id="row">
-                            </div>
-                        </div> 
-                        <div class="col-sm-3">
-                            <div class="form-group">
-                                <label for="band">Band</label>
-                                <select class="custom-select" name="band" id="bandSelect">
-                                </select>  
-                            </div>
-                        </div> 
-                        <div class="col-sm-6">
-                            <div class="form-group"> 
-                                <label for="start">From</label>
-                                <input class="form-control form-control-sm" type="text" placeholder="2015-01-01" name="start" id="startPicker">
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="end">To</label>
-                                <input class="form-control form-control-sm" type="text"  placeholder="2015-12-30" name="end" id="endPicker">
-                            </div>
-                        </div> 
-                        <div class="col-sm-6">
-                            <div class="form-group"> 
-                                <label for="start">Type</label>
-                                <select class="custom-select" name="type" id="typeSelect">
-                                </select> 
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="radiometricProcessing">RadiometricProcessing</label>
-                                <select class="custom-select" name="radiometricProcessing" id="radiometricProcessingSelect">
-                                </select> 
-                            </div>
-                        </div> 
-                        <div class="col-sm-6">
-                            <div class="form-group"> 
-                                <label for="count">Count</label>
-                                <input class="form-control form-control-sm" type="number" placeholder="10" name="count" id="count">
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="startIndex">Start Index</label>
-                                <input class="form-control form-control-sm" type="number" placeholder="1" name="startIndex" id="startIndex">
-                            </div>
-                        </div> 
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="collectionId">Collection ID</label>
-                                <select class="custom-select" name="dataset" id="collectionIdSelect">
-                                </select>                               
-                            </div> 
-                        </div>
-                        
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <button type="submit" class="btn btn-primary base-color" id="searchSubmit">Search</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="container-fluid nopadding-left" style="margin-top: 15px">
-                <div id="resultList" style="margin-top: 10px"></div>
-            </div>
-            <div class="sidebar-footer" id="sbfooter" style="display:none">Total of Results: 0</div>
-        </div>
-        <div class="sidebar-pane" id="download">
-            <h1 class="sidebar-header">Download<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
-        </div>
-        <div class="sidebar-pane" id="settings">
-            <h1 class="sidebar-header">Settings<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
-        </div>
-    </div>
-</div>
 <div id="map" class="sidebar-map"></div>
+
+<div id="sidebar-right" class="sidebar-right">
+    </br>
+    <div class="row justify-content-between">
+        <div class="col-auto">
+            <h2 class="modal-title">Activities:</h2>
+        </div>
+        <div class="col-auto">
+            <button id="selectbtn" type="button" class="btn btn-warning"><i class="fa fa-pause"></i></button>
+            <button id="selectbtn" type="button" class="btn btn-danger"><i class="fa fa-stop"></i></button>
+        </div>
+    </div>
+    
+    <table id="table"></table>
+</div>
+
 {% endblock %}
 
 {% block scripts %}
